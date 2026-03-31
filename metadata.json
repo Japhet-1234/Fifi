@@ -1,0 +1,5 @@
+{
+  "name": "Fifi's Restaurant & Cafe",
+  "description": "An elegant and attractive bilingual (English & Swahili) website for Fifi's Restaurant in Arusha, Tanzania, featuring their menu, atmosphere, and location.",
+  "requestFramePermissions": ["geolocation"]
+}
