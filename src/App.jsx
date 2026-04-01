@@ -210,7 +210,7 @@ const TRANSLATIONS = {
 
 export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [lang, setLang] = useState<"en" | "sw">("en");
+  const [lang, setLang] = useState("en");
   const t = TRANSLATIONS[lang];
 
   useEffect(() => {
@@ -520,4 +520,3 @@ export default function App() {
     </div>
   );
 }
-
