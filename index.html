@@ -22,45 +22,41 @@
         }
     </style>
     <!-- React & Babel CDNs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js" crossorigin></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
     <!-- Framer Motion CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.js" crossorigin></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js" crossorigin></script>
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest" crossorigin></script>
     <script src="https://unpkg.com/lucide-react@latest/dist/umd/lucide-react.js" crossorigin></script>
 </head>
 <body class="bg-[#F5F5F0] text-[#3A3A2E]">
-    <div id="root"></div>
+    <div id="root">
+        <div style="display: flex; justify-content: center; align-items: center; height: 100vh; font-family: sans-serif; color: #5A5A40;">
+            Loading Fifi's Restaurant & Cafe...
+        </div>
+    </div>
 
     <script type="text/babel">
-        // Debugging helper
-        console.log("React:", typeof React);
-        console.log("ReactDOM:", typeof ReactDOM);
-        console.log("Babel:", typeof Babel);
-        console.log("Motion Global:", window.Motion || window.framerMotion);
-        console.log("LucideReact:", typeof LucideReact);
-
-        const { useState, useEffect } = React;
+        // Robust library detection
+        const { useState, useEffect } = React || {};
         
-        // Robust access to Framer Motion
         const MotionGlobal = window.Motion || window.framerMotion;
         const motion = MotionGlobal ? MotionGlobal.motion : (props) => <div {...props} />;
         const AnimatePresence = MotionGlobal ? MotionGlobal.AnimatePresence : ({children}) => <>{children}</>;
 
-        // Robust access to Lucide Icons
         const Icons = window.LucideReact || {};
         const { 
-            Coffee = () => null, 
-            Utensils = () => null, 
-            MapPin = () => null, 
-            Clock = () => null, 
-            Phone = () => null, 
-            Instagram = () => null, 
-            Facebook = () => null, 
-            ChevronRight = () => null,
-            Star = () => null 
+            Coffee = () => <span>☕</span>, 
+            Utensils = () => <span>🍴</span>, 
+            MapPin = () => <span>📍</span>, 
+            Clock = () => <span>🕒</span>, 
+            Phone = () => <span>📞</span>, 
+            Instagram = () => <span>📸</span>, 
+            Facebook = () => <span>FB</span>, 
+            ChevronRight = () => <span>→</span>,
+            Star = () => <span>★</span> 
         } = Icons;
 
         const HERO_IMAGES = [
