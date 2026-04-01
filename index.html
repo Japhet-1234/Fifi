@@ -35,20 +35,33 @@
     <div id="root"></div>
 
     <script type="text/babel">
+        // Debugging helper
+        console.log("React:", typeof React);
+        console.log("ReactDOM:", typeof ReactDOM);
+        console.log("Babel:", typeof Babel);
+        console.log("Motion Global:", window.Motion || window.framerMotion);
+        console.log("LucideReact:", typeof LucideReact);
+
         const { useState, useEffect } = React;
-        const Motion = window.Motion || window.framerMotion;
-        const { motion, AnimatePresence } = Motion || { motion: (props) => <div {...props} />, AnimatePresence: ({children}) => <>{children}</> };
+        
+        // Robust access to Framer Motion
+        const MotionGlobal = window.Motion || window.framerMotion;
+        const motion = MotionGlobal ? MotionGlobal.motion : (props) => <div {...props} />;
+        const AnimatePresence = MotionGlobal ? MotionGlobal.AnimatePresence : ({children}) => <>{children}</>;
+
+        // Robust access to Lucide Icons
+        const Icons = window.LucideReact || {};
         const { 
-            Coffee, 
-            Utensils, 
-            MapPin, 
-            Clock, 
-            Phone, 
-            Instagram, 
-            Facebook, 
-            ChevronRight,
-            Star 
-        } = LucideReact;
+            Coffee = () => null, 
+            Utensils = () => null, 
+            MapPin = () => null, 
+            Clock = () => null, 
+            Phone = () => null, 
+            Instagram = () => null, 
+            Facebook = () => null, 
+            ChevronRight = () => null,
+            Star = () => null 
+        } = Icons;
 
         const HERO_IMAGES = [
             "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1920",
